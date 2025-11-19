@@ -1,0 +1,17 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+
+exports_files(["data/keymaps.csv"])
+
+py_binary(
+    name = "keymap-gen",
+    srcs = ["tools/keymap-gen.py"],
+    data = [
+        "data/keymaps.csv",
+        "tools/keymap-gen",
+    ],
+    imports = select({
+        "@platforms//os:windows": ["scripts"],
+        "//conditions:default": [],
+    }),
+    visibility = ["//visibility:public"],
+)
