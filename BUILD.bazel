@@ -1,6 +1,9 @@
 load("@rules_python//python:defs.bzl", "py_binary")
 
-exports_files(["data/keymaps.csv"])
+exports_files([
+    "data/keymaps.csv",
+    "tools/keymap-gen",
+])
 
 filegroup(
     name = "keycodemapdb_sources",
